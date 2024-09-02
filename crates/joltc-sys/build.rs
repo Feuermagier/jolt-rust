@@ -40,6 +40,7 @@ fn build_joltc() {
 
     // Warnings when building Jolt or JoltC don't matter to users of joltc-sys.
     config.configure_arg("-DENABLE_ALL_WARNINGS=OFF");
+    // config.configure_arg("-Werror=OFF");
 
     // These feature flags go through CMake and affect compilation of both Jolt
     // and JoltC.
@@ -61,8 +62,9 @@ fn build_joltc() {
 }
 
 fn link() {
-    println!("cargo:rustc-link-lib=Jolt");
     println!("cargo:rustc-link-lib=joltc");
+    println!("cargo:rustc-link-lib=Jolt");
+    println!("cargo:rustc-link-lib=stdc++");
 }
 
 /// Generate build flags specifically for generating bindings.
